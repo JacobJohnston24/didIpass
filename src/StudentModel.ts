@@ -1,24 +1,24 @@
-const myData:Record<string, Student> = {};
+const students: StudentManager = {};
 
-function calculateAverage(weights: CourseGrades): number {
-  weights.assignmentWeights.grade.
-}
+function addStudent(name: string, student: Student): boolean {
+  // if name is already in dataset
+  if (name in students) {
+    return false; // immediately exit
+  }
 
-function addStudent(newStudentData: NewStudentRequest): boolean {
-  // Destructure the name and weights
-  const { name, weights } = newStudentData;
-
-  // the the name is already in `students`
-    // then return false
-
-  // Calculate the student's current average (use the function previously defined)
-
-  const newStudent: Student = new students();// Create a `Student` object using the `name`, `weights` and `currentAverage`
-
-
-  // Add the new Student to the `students` object. The student's name is the key
-
-  // Finally, return true since the student was added
+  // creating student in dataset
+  students[name] = student;
   return true;
 }
 
+function getStudent(studentName: string): Student | undefined {
+  // if name is not in dataset
+  if (!(studentName in students)) {
+    return undefined; // immediately exit
+  }
+
+  // name is in dataset
+  return students[studentName];
+}
+
+export { students, addStudent, getStudent };
